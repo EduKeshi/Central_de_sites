@@ -1,5 +1,3 @@
-import re
-from threading import TIMEOUT_MAX
 import pyautogui
 import time
 
@@ -24,8 +22,27 @@ def loop_de_espera(caminho_da_imagem: str, tempo_limite: int, apertar_esc: bool)
             pyautogui.alert(text = f"Tempo limite atingido de {tempo_real: 1f} atingido, o aplicativo derá fechado após apertar o botão.")
             exit()
 
+def procurar_elementos_apertando_alt_tab(caminho_da_imagem: str, tempo_limite: int, minimizar_tudo_quando_acabar_o_tempo: bool):
+    # Começando o tempo
+    tempo_inicial = time.time()
 
-def teste():
+    # Fazendo loop de procura
+    while not(pyautogui.locateOnScreen(caminho_da_imagem)):
+        tempo_final = time.time()
+        pyautogui.hotkey("alt", "shift", "tab")
+        # Fazendo o calculo do tempo final com o inicial
+        tempo_real = tempo_final - tempo_inicial
+
+        if tempo_real > tempo_limite and minimizar_tudo_quando_acabar_o_tempo == True:
+            pyautogui.hotkey("win", "m")
+            pyautogui.alert(text = f"O tempo limite de busca ({tempo_real: 1f}) pelo aplicativo ou site foi excedido, o aplicativo será fechado após apertar o botão.")
+            exit()
+        
+        if tempo_real > tempo_limite and minimizar_tudo_quando_acabar_o_tempo == False:
+            pyautogui.alert(text = f"O tempo limite de busca ({tempo_real: 1f}) pelo aplicativo ou site foi excedido, o aplicativo será fechado após apertar o botão.")
+            exit()
+
+def abre_em_uma_janela_nova_ou_uma_existente():
     # Tempo de execução das linhas
     pyautogui.PAUSE = 1
 
@@ -48,7 +65,13 @@ def teste():
         pyautogui.press("enter")
         loop_de_espera(caminho_da_imagem = "imagens_de_busca/inicio_youtube.png", tempo_limite = 15, apertar_esc = False)
         pyautogui.alert(text = "Pronto, youtube aberto. Pode mexer")
-
+    
     # Condicional da "Janela Existente"
     if prompt_de_pergunta_para_saber_como_vai_abrir == "Janela Existente":
-        print("Janela Existente")
+        pyautogui.alert(text = "Depois dessa mensagem o código vai começar, não mexa em nada até aparecer a mensagem de fim")
+        procurar_elementos_apertando_alt_tab(caminho_da_imagem = "imagens_de_busca/pasta_do_chrome.png", tempo_limite = 15, minimizar_tudo_quando_acabar_o_tempo = True)
+        pyautogui.hotkey("ctrl", "t")
+        pyautogui.write("Youtube.com")
+        pyautogui.press("enter")
+        loop_de_espera(caminho_da_imagem = "imagens_de_busca/inicio_youtube.png", tempo_limite = 15, apertar_esc = False)
+        pyautogui.alert(text = "Pronto, youtube aberto. Pode mexer")
