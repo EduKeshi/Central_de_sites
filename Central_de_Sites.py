@@ -7,6 +7,7 @@ import speech_recognition as sr
 from tkinter import *
 
 import botao_youtube
+import botao_classroom
 
 # #Alertas do botao_yt, botao_class e botao_hash
 # texto_alerta_inicio_google_fechado = '''
@@ -216,83 +217,6 @@ import botao_youtube
 #     except:
 #         pyautogui.alert(text='Algo deu errado, tente novamente.', title='Algo deu errado')
 
-# def botao_class():
-#     pyautogui.PAUSE = 1  # Tempo de execução entre as linhas.
-
-#     pyautogui.hotkey('win', 'down')  # Atalho para minimizar a Central de Sites.
-
-#     confirmacao = pyautogui.confirm(text=texto_de_confirmacao, title='Confirmação de inicio',
-#                                     buttons=['Ok', 'Cancelar'])  # Aviso de confirmação.
-
-#     if confirmacao == 'Ok':
-#         pergunta_google_aberto = pyautogui.confirm(text='Você está com o Google aberto?', buttons=['Sim', 'Não'])
-#         if pergunta_google_aberto == 'Sim':
-#             pergunta_de_inicio = pyautogui.confirm(text=texto_alerta_inicio_google_aberto, buttons=['Sim', 'Não'])
-#             if pergunta_de_inicio == 'Sim':
-#                 try:
-#                     if pyautogui.locateOnScreen('recarregar_pagina.png', confidence=0.9):
-#                         pyautogui.hotkey('ctrl', 't')
-#                         while not pyautogui.locateOnScreen('barra_pesquisa_google_partedebaixo.png'):
-#                             time.sleep(1)
-#                         pyautogui.write('classroom.google.com')
-#                         apagar_sugestoes()
-#                         while not pyautogui.locateOnScreen('googleclassroom.png', confidence=0.9):
-#                             time.sleep(1)
-#                         fun_trocar_conta_classroom()
-#                     else:
-#                         x, y = pyautogui.locateCenterOnScreen('google aberto.png', confidence=0.9)
-#                         pyautogui.moveTo(x, y)
-#                         x, y = pyautogui.locateCenterOnScreen('google aberto barra de tarefas.png', confidence=0.9)
-#                         pyautogui.moveTo(x, y)
-#                         time.sleep(0.2)
-#                         pyautogui.click(x, y)
-#                         pyautogui.hotkey('ctrl', 't')
-#                         while not pyautogui.locateOnScreen('barra_pesquisa_google_partedebaixo.png'):
-#                             time.sleep(1)
-#                         pyautogui.write('classroom.google.com')
-#                         apagar_sugestoes()
-#                         while not pyautogui.locateOnScreen('googleclassroom.png', confidence=0.9):
-#                             time.sleep(1)
-#                         fun_trocar_conta_classroom()
-#                 except:
-#                     contador_vezes2 = 0
-#                     while not pyautogui.locateOnScreen('recarregar_pagina.png', confidence=0.9):
-#                         pyautogui.hotkey('alt', 'shift', 'tab')
-#                         time.sleep(1)
-#                         contador_vezes2 += 1
-#                         if contador_vezes2 > 12:
-#                             break
-#                         else:
-#                             pass
-#                     if contador_vezes2 <= 12:
-#                         pyautogui.hotkey('ctrl', 't')
-#                         while not pyautogui.locateOnScreen('barra_pesquisa_google_partedebaixo.png'):
-#                             time.sleep(1)
-#                         pyautogui.hotkey('win', 'm')
-#                         pyautogui.hotkey('alt', 'tab')
-#                         pyautogui.write('classroom.google.com')
-#                         apagar_sugestoes()
-#                         while not pyautogui.locateOnScreen('googleclassroom.png', confidence=0.9):
-#                             time.sleep(1)
-#                         fun_trocar_conta_classroom()
-#                     else:
-#                         navegador_nao_encontrado = pyautogui.confirm(
-#                             text='Não foi possivel achar o navegador, posso abrir um novo navegador para o programa ser executado?',
-#                             title='Navegador não encontrado', buttons=['Sim', 'Não'])
-#                         if navegador_nao_encontrado == 'Sim':
-#                             abrir_google_fechado()
-#                         else:
-#                             pyautogui.alert(aviso_programa_nao_sera_executado)
-#             else:
-#                 pyautogui.alert(aviso_programa_nao_sera_executado)
-#         else:
-#             confirmar_abrir_google = pyautogui.confirm(text=texto_alerta_inicio_google_fechado, buttons=['Sim', 'Não'])
-#             if confirmar_abrir_google == 'Sim':
-#                 abrir_google_fechado()
-#             else:
-#                 pyautogui.alert(aviso_programa_nao_sera_executado)
-#     else:
-#         pyautogui.alert(aviso_programa_nao_sera_executado)
 
 
 # #CMSP
@@ -367,11 +291,9 @@ def comando_voz():
 def botao_cmsp():
     pass
 
-def botao_class():
-    pass
-
 def botao_hash():
     pass
+
 window = Tk()
 window.title('Central de Sites')
 
@@ -423,7 +345,7 @@ b2 = Button(
     image = img2,
     borderwidth = 0,
     highlightthickness = 0,
-    command = botao_class,
+    command = botao_classroom.abrir_classroom,
     relief = "flat")
 
 b2.place(
