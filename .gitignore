@@ -1,0 +1,4 @@
+*.png
+*.ipynb
+mkl-service
+__pycache__/
