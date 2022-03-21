@@ -1,7 +1,8 @@
+from imp import PY_SOURCE
 import pyautogui
 import time
 
-from funcoes_auxiliares import loop_de_espera
+from funcoes_auxiliares import loop_de_espera, procurar_elementos_apertando_alt_tab
 from emails_e_senhas_de_login import email_conta_escola, senha_conta_escola
 
 def fazer_login_conta_escola(caminho_da_imagem: str, tempo_limite_para_esperar_a_tela_aparecer: int):
@@ -34,14 +35,11 @@ def abrir_classroom():
     # Tempo de execução entre as linhas 
     pyautogui.PAUSE = 1
 
-    # Tempo de execução das linhas
-    pyautogui.PAUSE = 1
-
-    # Prompt de pergunta 
-    prompt_de_pergunta_para_saber_como_vai_abrir = pyautogui.confirm(text = "O Classroom vai ser aberto em uma nova janela ou em uma janela existente?", buttons = ["Nova Janela", "Janela Existente"])
-
-    # Condicional do "Nova Janela"
-    if prompt_de_pergunta_para_saber_como_vai_abrir == "Nova Janela":
+    # Avisando que o programa vai ser executado
+    confirmacao = pyautogui.confirm(text = "O programa vai começar a ser executado, você deseja continuar?", buttons = ["Sim", "Não"])
+    
+    # Se a resposta for sim
+    if confirmacao == "Sim":
         # Abrindo o menu de navegação e escrevendo "Chrome"
         pyautogui.press("win")
         pyautogui.write("Chrome")
@@ -60,8 +58,8 @@ def abrir_classroom():
         # Esperando o site carregar e depois mostrar a mensagem de fim
         loop_de_espera(caminho_da_imagem = "imagens_de_busca/nome_turma_classroom.png", tempo_limite = 15, apertar_esc = False)
         pyautogui.alert("Pronto, pode mexer.")
-        
-
+    else:
+        pyautogui.alert(text = "O programa não será executado.")
 
 
 
