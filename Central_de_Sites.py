@@ -8,6 +8,7 @@ from tkinter import *
 
 import botao_youtube
 import botao_classroom
+import botao_hashtag
 
 # #Alertas do botao_yt, botao_class e botao_hash
 # texto_alerta_inicio_google_fechado = '''
@@ -93,62 +94,6 @@ import botao_classroom
 #         pyautogui.alert(text='Não foi possivel fazer o login na plataforma, tente novamente.')#Mensagem de "erro".
 
 # #Hashtag
-# def botao_hash():
-    
-#     pyautogui.PAUSE = 1#Tempo entre a execução das linhas
-    
-#     pyautogui.hotkey('win', 'down')#MInimizando a Central de Sites
-    
-#     aviso_confirmacao = pyautogui.confirm(text=texto_de_confirmacao, buttons=['Entendi', 'Cancelar'])#"Explicação" sobre como vai funcionar.
-    
-#     if aviso_confirmacao == 'Entendi':#Se o "aviso_confirmacao" for "Entendi".
-#         confirmacao_google_aberto = pyautogui.confirm(text='Você está com o google aberto?', buttons=['Sim', 'Não'])#Pergunta se o Google está aberto.
-
-#         if confirmacao_google_aberto == 'Sim':#Se a "confirmacao_google_aberto" for "Sim" ele executa.
-#             confirmacao2= pyautogui.confirm(text=texto_alerta_inicio_google_aberto, buttons=['Sim', 'Não'])#Aviso de inicio.
-#             if confirmacao2 == 'Sim':
-#                 if pyautogui.locateOnScreen('recarregar_pagina.png', confidence=0.9):#Se ele achar o botão de recarregar página do Google.
-#                     pyautogui.hotkey('ctrl', 't')#Abrindo uma nova aba.
-#                     entrar_curso()#Function para entrar no curso.
-#                 else:
-#                     #Aqui ele vai tentar achar o google pela barra de tarefas
-#                     x, y = pyautogui.locateCenterOnScreen('google aberto.png', confidence=0.9)
-#                     pyautogui.moveTo(x, y)
-#                     x, y = pyautogui.locateCenterOnScreen('google aberto barra de tarefas.png', confidence=0.9)
-#                     pyautogui.moveTo(x, y)
-#                     pyautogui.click(x, y)
-#                     pyautogui.hotkey('ctrl', 't')
-#                     entrar_curso()#Function para entrar no curso.
-#             else:
-#                 pyautogui.alert(aviso_programa_nao_sera_executado)
-#         else:
-#             confimacao = pyautogui.confirm(text=texto_alerta_inicio_google_fechado, buttons=['Sim', 'Não'])#Aviso de inicio.
-#             if confimacao == 'Sim':
-#                 pyautogui.press('win')#Aperta a tecla "Windows".
-#                 pyautogui.write('Chrome')#Escreve "Chrome".
-#                 tempo_inicial = time.time()#Começar a contar os segundos.
-#                 contador_vezes = 0#Vai contar quantas vezes ele vai passar.
-#                 while not pyautogui.locateOnScreen('app do google na barra de pesquisa do windows.png'):#Enquanto ele não achar a foto do app do google na barra de pesquisa do windows.
-#                     time.sleep(2.8)#Espera 2.8 segundos.
-#                     contador_vezes += 1#Cada vez que o "While" passar ele vai acrescentar 1 na variável auxiliar.
-#                     if contador_vezes == 20:#Se o contador de vezes for igual a 20.
-#                         break#Quebra o loop.
-#                     else:
-#                         pass#Não faz nada 
-#                 tempo_final = time.time()#Parando de contar.
-#                 tempo_total = tempo_final - tempo_inicial#Calculando tempo final.
-#                 if contador_vezes < 20:#Se o contador de vezes for menor que 20.
-#                     pyautogui.press('enter')#Vai apertar enter.
-#                     pyautogui.hotkey('win', 'up')#Atalho para maximizar.
-#                     entrar_curso()#Function para entrar no curso.
-#                 else:
-#                     pyautogui.press('esc')#Apertando o esc.
-#                     time.sleep(0.3)#Espera 0.3 segundos.
-#                     pyautogui.alert(text=f'Não será possivel abrir o Google pois o tempo limite de espera de {tempo_total:.0f} segundos foi atingido.', title='Tempo limite atingido')#Mensagem de "erro".
-#             else:
-#                 pyautogui.alert(aviso_programa_nao_sera_executado)#Mensagem avisando que o programa não será executado.
-#     else:
-#         pyautogui.alert(aviso_programa_nao_sera_executado)#Mensagem avisando que o programa não será executado.
 
 # def abrir_google_fechado():
 #     pyautogui.press('win')
@@ -291,9 +236,6 @@ def comando_voz():
 def botao_cmsp():
     pass
 
-def botao_hash():
-    pass
-
 window = Tk()
 window.title('Central de Sites')
 
@@ -358,7 +300,7 @@ b3 = Button(
     image = img3,
     borderwidth = 0,
     highlightthickness = 0,
-    command = botao_hash,
+    command = botao_hashtag.entrar_no_curso,
     relief = "flat")
 
 b3.place(
