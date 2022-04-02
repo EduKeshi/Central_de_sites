@@ -10,7 +10,7 @@ def comando_voz():
     # Criando o reconhecedor
     reconhecedor_de_voz = sr.Recognizer()
 
-    # Escutando o mic
+    # Escutando o microfone
     with sr.Microphone() as microfone:
         # Tratando o ruido
         pyautogui.alert("Ajustando ruido...")
@@ -19,8 +19,7 @@ def comando_voz():
         audio_do_microfone = reconhecedor_de_voz.listen(microfone)
         
     try:
-        comandos = reconhecedor_de_voz.recognize_google(audio_do_microfone, language = "pt-BR")
-        print(comandos)       
+        comandos = reconhecedor_de_voz.recognize_google(audio_do_microfone, language = "pt-BR")      
     except sr.UnknownValueError:
         print("Não consegui te escutar")
         return
