@@ -1,39 +1,10 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
-import pyautogui
-import speech_recognition as sr
 from tkinter import *
 
 import botao_youtube
 import botao_classroom
 import botao_hashtag
 import botao_cmsp
-
-# def comando_voz():
-#     #Criando o reconhecedor
-#     rec = sr.Recognizer()
-
-#     #Escutando o mic
-#     with sr.Microphone(device_index=3) as microfone:
-#         #Tratando o ruido
-#         pyautogui.alert('Ajustando ruido...')
-#         rec.adjust_for_ambient_noise(microfone)
-#         pyautogui.alert('Pode começar a falar:')
-#         audio = rec.listen(microfone)
-#     try:
-#         global comandos
-#         comandos = rec.recognize_google(audio, language='pt-BR')
-#     except:
-#         pyautogui.alert('Você não falou nada, logo o código não será executado.')        
-#     #Funções para as falas
-#     if 'YouTube' in comandos:
-#         print('YouTube')
-#     else:
-#         pass
-
-def comando_voz():
-    pass
+import comandos_de_voz
 
 window = Tk()
 window.title('Central de Sites')
@@ -60,7 +31,7 @@ b0 = Button(
     image = img0,
     borderwidth = 0,
     highlightthickness = 0,
-    command = comando_voz,
+    command = comandos_de_voz.comando_voz,
     relief = "flat")
 
 b0.place(

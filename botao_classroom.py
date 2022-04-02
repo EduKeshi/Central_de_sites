@@ -1,4 +1,3 @@
-from imp import PY_SOURCE
 import pyautogui
 import time
 
