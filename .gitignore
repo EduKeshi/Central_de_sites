@@ -2,3 +2,4 @@
 *.ipynb
 mkl-service
 __pycache__/
+emails_e_senhas_de_login.py
