@@ -31,7 +31,7 @@ Ela é orientada a imagens, eu faço screenshots dos lugares onde eu quero que e
 
 # Desvantagens
 - A biblioteca Pyautogui não funciona em outras telas, somente ma tela principal do seu computador;
-- O Pyautogui não consegui identificar a imagem se a screenshot não for tirada no seu computador, pois ele identifica a resolução da tela, e se for diferente da tela que ele esá em execução ele não consegue ver a imagem;
+- O Pyautogui não consegui identificar a imagem se a screenshot não for tirada no seu computador, pois ele identifica a resolução da tela, e se for diferente da tela que ele está em execução ele não consegue ver a imagem;
 - Você não pode mexer no computador se a funcionalidade utilizar o Pyautogui, pois ele controla o seu mouse e seu teclado;
 - Se a imagem ficar diferente no futuro você vai ter que tirar uma nova screenshot;
 - A interface gráfica não tem eventos se o código está em execução. Como o Python tem um fluxo sincrono (uma coisa depois a outra) isso não permite fazer uma interface que tenha eventos fora da funcionalidade.
