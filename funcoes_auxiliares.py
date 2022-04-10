@@ -16,12 +16,12 @@ def loop_de_espera(caminho_da_imagem: str, tempo_limite: int, apertar_esc: bool)
         # Se o tempo que ficar no while for atingido
         if tempo_real > tempo_limite and apertar_esc == True:
             pyautogui.press("esc")
-            pyautogui.alert(text = f"Tempo limite atingido de {tempo_real: 1f} atingido, o aplicativo derá fechado após apertar o botão.")
+            pyautogui.alert(text = f"Tempo limite de {int(tempo_real)} segundos atingido, o aplicativo será fechado após apertar o botão.")
             exit()
 
         # Se o tempo que ficar no while for atingido
         if tempo_real > tempo_limite and apertar_esc == False:
-            pyautogui.alert(text = f"Tempo limite atingido de {tempo_real: 1f} atingido, o aplicativo derá fechado após apertar o botão.")
+            pyautogui.alert(text = f"Tempo limite de {int(tempo_real)} segundos atingido, o aplicativo será fechado após apertar o botão.")
             exit()
 
 def procurar_elementos_apertando_alt_tab(caminho_da_imagem: str, tempo_limite: int, minimizar_tudo_quando_acabar_o_tempo: bool):
@@ -39,10 +39,10 @@ def procurar_elementos_apertando_alt_tab(caminho_da_imagem: str, tempo_limite: i
         # Se o tempo que ficar no while for atingido
         if tempo_real > tempo_limite and minimizar_tudo_quando_acabar_o_tempo == True:
             pyautogui.hotkey("win", "m")
-            pyautogui.alert(text = f"O tempo limite de busca ({tempo_real: 1f}) pelo aplicativo ou site foi excedido, o aplicativo será fechado após apertar o botão.")
+            pyautogui.alert(text = f"O tempo limite de busca ({int(tempo_real)} sengundos) pelo aplicativo ou site foi excedido, o aplicativo será fechado após apertar o botão.")
             exit()
         
         # Se o tempo que ficar no while for atingido
         if tempo_real > tempo_limite and minimizar_tudo_quando_acabar_o_tempo == False:
-            pyautogui.alert(text = f"O tempo limite de busca ({tempo_real: 1f}) pelo aplicativo ou site foi excedido, o aplicativo será fechado após apertar o botão.")
+            pyautogui.alert(text = f"O tempo limite de busca ({int(tempo_real)} sengundos) pelo aplicativo ou site foi excedido, o aplicativo será fechado após apertar o botão.")
             exit()
