@@ -1,0 +1,6 @@
+future
+pyautogui
+selenium
+speech_recognition
+time
+tkinter
